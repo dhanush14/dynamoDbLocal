@@ -21,4 +21,8 @@ step3:
     1.to create table run 
         node dynamodbCreateTable.js
     2. to add the data
-        node dynamodbOperations.js
+        node dynamodbOperations.js\
+
+
+Query documentation:
+https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#query-property
