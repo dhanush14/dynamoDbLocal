@@ -1,0 +1,4 @@
+{
+    "myAwsRegion" : "fakeRegion",
+    "myAWSEndPoint" : "http://localhost:8000"
+}
