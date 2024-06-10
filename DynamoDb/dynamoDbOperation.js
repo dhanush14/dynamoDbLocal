@@ -1,18 +1,26 @@
+require('dotenv').config()
 var AWS= require('aws-sdk')
 const ServiceConfigurationOptions = {
-    region: "fakeRegion",
-    endpoint: "http://localhost:8000",
+    region: "eu-north-1",
+    credentials:{
+        accessKeyId:process.env.AWS_ACCESS_KEY,
+        secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY
+    }
   };
 
 var docClient= new AWS.DynamoDB.DocumentClient(ServiceConfigurationOptions)
 
-function insertData(res){
-    console.log("Res",res)
-    const params={
-        TableName: "Student_table1",
-        Item: res
-    }
-    docClient.put(params,(err,data)=>{
+;
+function insertData(re){
+    console.log("Res",ServiceConfigurationOptions)
+    var params = {
+        TableName: 'Design_1',
+        KeyConditionExpression: re.partitionKey+'= :pk',
+        ExpressionAttributeValues: {
+          ':pk': re.partitionKey_value,             
+        }
+      }
+    docClient.query(params,(err,data)=>{
         if(err){
             console.log("Error while adding the data",err)
         }
